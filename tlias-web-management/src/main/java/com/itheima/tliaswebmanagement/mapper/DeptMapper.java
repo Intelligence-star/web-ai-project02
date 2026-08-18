@@ -33,4 +33,11 @@ public interface DeptMapper {
      */
     @Delete("DELETE FROM dept WHERE id = #{id}")
     void deleteById(Integer id);
+
+    /**
+     * 添加部门
+     * @param dept
+     */
+    @Insert("INSERT INTO dept (name, create_time, update_time) VALUES (#{name}, #{createTime}, #{updateTime})")
+    void insert(Dept dept);
 }

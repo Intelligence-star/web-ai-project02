@@ -5,10 +5,7 @@ import com.itheima.tliaswebmanagement.pojo.Result;
 import com.itheima.tliaswebmanagement.service.DeptService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -57,4 +54,15 @@ public class DeptController {
         return Result.success();
     }
 
+    /**
+     * 新增部门
+     * @param dept
+     * @return
+     */
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept) {
+        System.out.println("添加部门：" + dept);
+        deptService.add(dept);
+        return Result.success();
+    }
 }
