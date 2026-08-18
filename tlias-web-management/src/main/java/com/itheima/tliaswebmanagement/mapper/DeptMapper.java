@@ -1,10 +1,7 @@
 package com.itheima.tliaswebmanagement.mapper;
 
 import com.itheima.tliaswebmanagement.pojo.Dept;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -29,4 +26,11 @@ public interface DeptMapper {
 
     @Select("SELECT id, name, create_time, update_time FROM dept ORDER BY update_time DESC;")
     List<Dept> findAll();
+
+    /**
+     * 根据id删除部门
+      * @param id
+     */
+    @Delete("DELETE FROM dept WHERE id = #{id}")
+    void deleteById(Integer id);
 }
