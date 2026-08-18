@@ -57,12 +57,31 @@ public class DeptController {
     /**
      * 新增部门
      * @param dept
-     * @return
      */
     @PostMapping("/depts")
     public Result add(@RequestBody Dept dept) {
         System.out.println("添加部门：" + dept);
         deptService.add(dept);
+        return Result.success();
+    }
+
+    /**
+     * 根据id查询部门
+     */
+    @GetMapping("/depts/{id}")
+    public Result getById(@PathVariable Integer id) {
+        System.out.println("根据id查询部门：" + id);
+        Dept dept = deptService.getById(id);
+        return Result.success(dept);
+    }
+
+    /**
+     * 修改部门
+     */
+    @PutMapping("/depts")
+    public Result update(@RequestBody Dept dept) {
+        System.out.println("修改部门：" + dept);
+        deptService.update(dept);
         return Result.success();
     }
 }
