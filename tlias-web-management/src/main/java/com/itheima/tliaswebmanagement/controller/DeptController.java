@@ -4,11 +4,13 @@ import com.itheima.tliaswebmanagement.pojo.Dept;
 import com.itheima.tliaswebmanagement.pojo.Result;
 import com.itheima.tliaswebmanagement.service.DeptService;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 public class DeptController {
 
@@ -17,7 +19,8 @@ public class DeptController {
 
     @RequestMapping("/depts")
     public Result list() {
-        System.out.println("查询全部部门数据");
+        log.info("查询全部部门数据");
+
         List<Dept> deptList = deptService.findAll();
         return Result.success(deptList);
     }
@@ -49,7 +52,7 @@ public class DeptController {
      */
     @DeleteMapping("/depts")
     public Result delete(Integer id) {
-        System.out.println("根据id删除部门：" + id);
+        log.info("根据id删除部门: {}" , id);
         deptService.deleteById(id);
         return Result.success();
     }
@@ -60,7 +63,7 @@ public class DeptController {
      */
     @PostMapping("/depts")
     public Result add(@RequestBody Dept dept) {
-        System.out.println("添加部门：" + dept);
+        log.info("添加部门: {}" , dept);
         deptService.add(dept);
         return Result.success();
     }
@@ -70,7 +73,7 @@ public class DeptController {
      */
     @GetMapping("/depts/{id}")
     public Result getById(@PathVariable Integer id) {
-        System.out.println("根据id查询部门：" + id);
+        log.info("根据id查询部门: {}" , id);
         Dept dept = deptService.getById(id);
         return Result.success(dept);
     }
@@ -80,7 +83,7 @@ public class DeptController {
      */
     @PutMapping("/depts")
     public Result update(@RequestBody Dept dept) {
-        System.out.println("修改部门：" + dept);
+        log.info("修改部门: {}" , dept);
         deptService.update(dept);
         return Result.success();
     }
