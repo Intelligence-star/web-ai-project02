@@ -14,4 +14,9 @@ public interface EmpService {
      */
     PageResult<Emp> page(Integer page, Integer pageSize);
 
+    /**
+     * 添加员工信息
+     * @param emp
+     */
+    void save(Emp emp);
 }

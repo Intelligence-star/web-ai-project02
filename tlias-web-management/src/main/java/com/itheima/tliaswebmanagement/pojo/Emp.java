@@ -24,4 +24,7 @@ public class Emp {
 
     //关联的部门
     private String deptName; //关联的部门名称
+
+    //封装工作经历信息
+    private List<EmpExpr> exprList; //工作经历信息
 }
